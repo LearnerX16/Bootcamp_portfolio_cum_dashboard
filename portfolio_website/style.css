@@ -1,0 +1,793 @@
+/* ==========================================================================
+   PORTFOLIO STYLESHEET - CHAUDHARY HARSH
+   Theme: White Background + Blue Accents
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL STYLES & VARIABLES
+   -------------------------------------------------------------------------- */
+:root {
+    --bg-white: #ffffff;
+    --bg-light: #f8fafc;
+    --blue-primary: #2563eb;
+    --blue-hover: #1d4ed8;
+    --blue-light: #eff6ff;
+    --blue-border: #bfdbfe;
+    
+    --text-dark: #0f172a;
+    --text-gray: #475569;
+    --border-gray: #e2e8f0;
+    
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --radius-card: 16px;
+    --radius-btn: 10px;
+    
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 12px 30px rgba(37, 99, 235, 0.12);
+}
+
+/* Reset Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: var(--font-main);
+}
+
+body {
+    background-color: var(--bg-white);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Container & Sections */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section {
+    padding: 4.5rem 0;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.text-blue {
+    color: var(--blue-primary);
+}
+
+/* Section Headings */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--blue-primary);
+    letter-spacing: 1.5px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-top: 0.2rem;
+}
+
+.title-line {
+    width: 45px;
+    height: 4px;
+    background-color: var(--blue-primary);
+    margin: 0.6rem auto 0 auto;
+    border-radius: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   2. BUTTONS
+   -------------------------------------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.6rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius-btn);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.btn-blue {
+    background-color: var(--blue-primary);
+    color: #ffffff;
+    border: 2px solid var(--blue-primary);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+
+.btn-blue:hover {
+    background-color: var(--blue-hover);
+    border-color: var(--blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+}
+
+.btn-outline {
+    background-color: #ffffff;
+    color: var(--blue-primary);
+    border: 2px solid var(--blue-border);
+}
+
+.btn-outline:hover {
+    background-color: var(--blue-light);
+    border-color: var(--blue-primary);
+    transform: translateY(-2px);
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   3. STICKY NAVIGATION BAR
+   -------------------------------------------------------------------------- */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.brand-badge {
+    width: 36px;
+    height: 36px;
+    background-color: var(--blue-primary);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-gray);
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--blue-primary);
+}
+
+.nav-links .nav-cta {
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--blue-border);
+}
+
+.nav-links .nav-cta:hover {
+    background-color: var(--blue-primary);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   4. HERO SECTION
+   -------------------------------------------------------------------------- */
+.hero-section {
+    padding: 5rem 0 4.5rem 0;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.9rem;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--blue-border);
+    margin-bottom: 1.2rem;
+}
+
+.badge-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--blue-primary);
+    border-radius: 50%;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--blue-primary);
+    margin-bottom: 1.2rem;
+}
+
+.hero-description {
+    font-size: 1.05rem;
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+    max-width: 550px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Profile Card Widget */
+.hero-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 300px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-gray);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--blue-border);
+}
+
+.card-banner {
+    height: 80px;
+    background-color: var(--blue-primary);
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    margin: -40px auto 0.8rem auto;
+    background: #ffffff;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar span {
+    width: 100%;
+    height: 100%;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.profile-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.profile-info p {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+}
+
+.profile-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    padding: 1.2rem;
+}
+
+.tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    background-color: var(--bg-light);
+    color: var(--text-gray);
+    border-radius: 12px;
+    border: 1px solid var(--border-gray);
+}
+
+/* --------------------------------------------------------------------------
+   5. ABOUT ME SECTION
+   -------------------------------------------------------------------------- */
+.about-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border-gray);
+    padding: 2.2rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--blue-border);
+}
+
+.about-icon {
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.about-text p {
+    font-size: 1.05rem;
+    color: var(--text-gray);
+    line-height: 1.8;
+}
+
+/* --------------------------------------------------------------------------
+   6. SKILLS SECTION
+   -------------------------------------------------------------------------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border-gray);
+    padding: 2rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--blue-border);
+}
+
+.skill-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-gray);
+}
+
+.icon-box {
+    width: 44px;
+    height: 44px;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-box svg {
+    width: 22px;
+    height: 22px;
+}
+
+.skill-card-header h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.skill-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--text-gray);
+}
+
+.bullet {
+    width: 8px;
+    height: 8px;
+    background-color: var(--blue-primary);
+    border-radius: 50%;
+}
+
+/* --------------------------------------------------------------------------
+   7. PROJECT SECTION
+   -------------------------------------------------------------------------- */
+.project-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border-gray);
+    padding: 2.2rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--blue-border);
+}
+
+.project-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--blue-primary);
+    background-color: var(--blue-light);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--blue-border);
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+.project-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+}
+
+.project-description {
+    font-size: 1rem;
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.project-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.chip {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 0.8rem;
+    background-color: var(--bg-light);
+    color: var(--blue-primary);
+    border-radius: 8px;
+    border: 1px solid var(--border-gray);
+}
+
+/* --------------------------------------------------------------------------
+   8. CERTIFICATION SECTION
+   -------------------------------------------------------------------------- */
+.cert-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cert-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border-gray);
+    padding: 2rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--blue-border);
+}
+
+.cert-icon {
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    background-color: var(--blue-primary);
+    color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cert-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.cert-issuer {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+}
+
+.cert-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 0.4rem;
+}
+
+.cert-desc {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+}
+
+/* --------------------------------------------------------------------------
+   9. EDUCATION SECTION
+   -------------------------------------------------------------------------- */
+.education-list {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.edu-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border-gray);
+    padding: 1.5rem 1.8rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.edu-card:hover {
+    transform: translateX(5px);
+    border-color: var(--blue-border);
+}
+
+.edu-icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edu-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.edu-year {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--blue-primary);
+}
+
+.edu-degree {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.edu-school {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+/* --------------------------------------------------------------------------
+   10. CONTACT SECTION
+   -------------------------------------------------------------------------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background-color: #ffffff;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border-gray);
+    padding: 1.6rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--blue-primary);
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-card:hover .contact-icon {
+    background-color: var(--blue-primary);
+    color: #ffffff;
+}
+
+.contact-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.contact-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    display: block;
+}
+
+.contact-text {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    word-break: break-all;
+}
+
+/* --------------------------------------------------------------------------
+   11. FOOTER
+   -------------------------------------------------------------------------- */
+.footer {
+    background-color: var(--bg-light);
+    border-top: 1px solid var(--border-gray);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+/* --------------------------------------------------------------------------
+   12. RESPONSIVE MEDIA QUERIES
+   -------------------------------------------------------------------------- */
+@media (max-width: 850px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .about-card, .cert-card {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-links a:not(.nav-cta) {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .edu-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
