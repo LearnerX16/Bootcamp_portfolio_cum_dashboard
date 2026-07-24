@@ -1,0 +1,34 @@
+### Health check
+GET http://localhost:3000/
+
+### GET sales data for a valid report date
+GET http://localhost:3000/api/sales?report_date=2026-06-29
+
+### GET error: missing report_date
+GET http://localhost:3000/api/sales
+
+### GET error: invalid date format
+GET http://localhost:3000/api/sales?report_date=29-06-2026
+
+### GET error: date not found
+GET http://localhost:3000/api/sales?report_date=2026-07-10
+
+### POST new sales record
+POST http://localhost:3000/api/sales
+Content-Type: application/json
+
+{
+  "report_date": "2026-07-01",
+  "total_units_sold": 1550,
+  "total_revenue": 1015000,
+  "top_country": "Japan",
+  "activation_success_rate": 94.2,
+  "units_trend": "+11% vs previous day",
+  "revenue_trend": "Crossed 10 lakh revenue",
+  "activation_status": "Excellent operations",
+  "trend_type": "positive",
+  "insight": "Japan became the top-performing market with strong sales and excellent activation success."
+}
+
+### GET the record added by POST
+GET http://localhost:3000/api/sales?report_date=2026-07-01
