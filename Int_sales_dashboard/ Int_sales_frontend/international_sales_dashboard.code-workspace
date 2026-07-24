@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../international_sim_backend"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "international_sales_dashboard"
+	}
+}
