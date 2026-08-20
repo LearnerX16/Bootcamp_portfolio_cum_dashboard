@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="army-green">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <main class="dashboard">
+
+    <!-- HEADER -->
+    <header class="dashboard-header">
+      <div>
+        <h1>Sales Dashboard</h1>
+        <p>Performance insights at a glance</p>
+      </div>
+      <div class="header-actions">
+        <div class="month-select-wrapper">
+          <select id="monthSelect" class="month-select">
+            <option value="">📅 Select Month</option>
+            <option value="may">May</option>
+            <!-- Months will be dynamically loaded based on available data -->
+          </select>
+        </div>
+        <input type="date" id="reportDate" class="date-input" />
+        <button id="fetchBtn" class="fetch-btn">Refresh</button>
+        <button id="exportBtn" class="export-btn">Export</button>
+      </div>
+    </header>
+
+    <!-- STATUS BAR -->
+    <div id="statusBar" class="status-bar hidden"></div>
+
+    <!-- DATA INFO BANNER -->
+    <div class="data-info-banner" id="dataInfoBanner">
+      <div class="data-info-item">
+        <span class="info-label">Selected Date</span>
+        <span class="info-value" id="selectedDateInfo">—</span>
+      </div>
+      <div class="data-info-item">
+        <span class="info-label">Data Source Period</span>
+        <span class="info-value" id="dataRangeInfo">Select a date to view coverage</span>
+      </div>
+      <div class="data-info-item">
+        <span class="info-label">Last Refreshed</span>
+        <span class="info-value" id="lastUpdateInfo">—</span>
+      </div>
+      <div class="data-info-item">
+        <span class="info-label">Dataset Size</span>
+        <span class="info-value" id="totalRecordsInfo">—</span>
+      </div>
+    </div>
+
+    <!-- KPI CARDS GRID -->
+    <section class="kpi-section">
+      <h2 class="section-title">Performance Metrics</h2>
+      <div class="kpi-grid">
+        <!-- TODAY -->
+        <div class="kpi-card today">
+          <div class="kpi-header">
+            <span class="kpi-label">Today</span>
+          </div>
+          <div class="kpi-value" id="todaySales">—</div>
+          <div class="kpi-subtitle">Sales</div>
+          <div class="kpi-revenue" id="todayRevenue">₹—</div>
+          <div class="kpi-change" id="todayChange">—</div>
+        </div>
+
+        <!-- MTD -->
+        <div class="kpi-card mtd">
+          <div class="kpi-header">
+            <span class="kpi-label">Month to Date</span>
+          </div>
+          <div class="kpi-value" id="mtdSales">—</div>
+          <div class="kpi-subtitle">Total Sales</div>
+          <div class="kpi-revenue" id="mtdRevenue">₹—</div>
+          <div class="kpi-avg" id="mtdAvg">—</div>
+        </div>
+
+        <!-- PMSD -->
+        <div class="kpi-card pmsd">
+          <div class="kpi-header">
+            <span class="kpi-label">Prev Month Same Day</span>
+          </div>
+          <div class="kpi-value" id="pmsdSales">—</div>
+          <div class="kpi-subtitle">Sales</div>
+          <div class="kpi-revenue" id="pmsdRevenue">₹—</div>
+          <div class="kpi-compare" id="pmsdCompare">—</div>
+        </div>
+
+        <!-- PM -->
+        <div class="kpi-card pm">
+          <div class="kpi-header">
+            <span class="kpi-label">Previous Month</span>
+          </div>
+          <div class="kpi-value" id="pmSales">—</div>
+          <div class="kpi-subtitle">Total Sales</div>
+          <div class="kpi-revenue" id="pmRevenue">₹—</div>
+          <div class="kpi-avg" id="pmAvg">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADDITIONAL METRICS -->
+    <section class="kpi-section">
+      <h2 class="section-title">Advanced Analytics</h2>
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Avg Order Value</div>
+          <div class="metric-value" id="avgRevenueToday">₹—</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Growth Rate</div>
+          <div class="metric-value" id="mtdGrowth">—%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Daily Velocity</div>
+          <div class="metric-value" id="dailyAvgMTD">—</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Top Rep</div>
+          <div class="metric-value" id="topPerformer">—</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Total Volume</div>
+          <div class="metric-value" id="totalOrdersMTD">—</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Peak Revenue</div>
+          <div class="metric-value" id="highestSale">₹—</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Conversion Rate</div>
+          <div class="metric-value" id="conversionRate">—%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Market Share</div>
+          <div class="metric-value" id="marketShare">—%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Customer LTV</div>
+          <div class="metric-value" id="customerLTV">₹—</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Churn Risk</div>
+          <div class="metric-value" id="churnRisk">—%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Yesterday Sales</div>
+          <div class="metric-value" id="yesterdaySales">—</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Day-over-Day</div>
+          <div class="metric-value" id="dayOverDay">—%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Week-over-Week</div>
+          <div class="metric-value" id="weekOverWeek">—%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Projected MTD</div>
+          <div class="metric-value" id="projectedMTD">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENHANCED CHARTS SECTION -->
+    <div class="charts-row">
+      <section class="chart-panel">
+        <h3>Daily Sales Trend</h3>
+        <div class="chart-wrapper">
+          <canvas id="dailyTrendChart" width="400" height="200"></canvas>
+        </div>
+        <div id="dailyChart" class="chart-container legacy-chart">
+          <p class="muted">No data available</p>
+        </div>
+      </section>
+
+      <section class="chart-panel chart-panel-wide">
+        <h3>Team Performance</h3>
+        <div id="leaderboard" class="leaderboard-container">
+          <p class="muted">No data available</p>
+        </div>
+      </section>
+
+      <section class="chart-panel">
+        <h3>Monthly Performance</h3>
+        <div class="chart-wrapper">
+          <canvas id="monthlyTrendChart" width="400" height="200"></canvas>
+        </div>
+        <div id="monthlyChart" class="chart-container legacy-chart">
+          <p class="muted">No data available</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- SUMMARY CHARTS SECTION -->
+    <div class="summary-charts">
+      <section class="summary-panel">
+        <h3>Sales vs Revenue Summary</h3>
+        <div class="chart-wrapper">
+          <canvas id="salesRevenueChart" width="600" height="300"></canvas>
+        </div>
+      </section>
+      
+      <section class="summary-panel">
+        <h3>Monthly Growth Analysis</h3>
+        <div class="chart-wrapper">
+          <canvas id="growthAnalysisChart" width="600" height="300"></canvas>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
